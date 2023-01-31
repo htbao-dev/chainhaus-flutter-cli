@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "chainhaus",
+            "name": "chainhaus_flutter_cli",
             "request": "launch",
             "type": "dart",
-            "program": "bin/chainhaus.dart",
-            "args": ["helasdp"]
+            "program": "bin/chainhaus_flutter_cli.dart",
+            "args": ["base-code", "-t" ,"normal"]
         }
     ]
 }

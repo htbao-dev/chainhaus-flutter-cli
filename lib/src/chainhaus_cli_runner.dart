@@ -1,14 +1,16 @@
-import 'dart:io';
-import 'package:chainhaus/src/commands/help_command/help_command_config.dart';
+import 'package:args/command_runner.dart';
+import 'package:chainhaus_flutter_cli/src/commands/base_code_command.dart';
 
-import 'commands/configuration_command_builder.dart';
-import 'commands/create_command/create_command_config.dart';
-
-class ChainhausCliRunner {
-  void run(List<String> arguments) {
-    ConfigurationCommandBuilder()
-        .addConfiguration(CreateCommandConfig())
-        .addConfiguration(HelpCommandConfig())
-        .run(arguments);
+class ChainhausFlutterCliRunner {
+  void run(List<String> arguments) async {
+    final runner = CommandRunner('chainhaus-flutter', 'A cli tool');
+    runner.addCommand(BaseCodeCommand());
+    try {
+      await runner.run(arguments);
+    } on UsageException catch (e) {
+      print(e.message);
+    } catch (e) {
+      runner.printUsage();
+    }
   }
 }
